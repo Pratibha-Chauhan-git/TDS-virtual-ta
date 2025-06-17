@@ -1,0 +1,22 @@
+.env
+.venv/
+tools-in-data-science-public/
+# Ignore Python cache and virtual environment
+__pycache__/
+venv/
+
+# Ignore sensitive files
+auth.json
+embedding_data.json
+discourse_posts.json
+vector.index
+
+# Ignore logs and temporary files
+*.log
+
+# VSCode config (optional)
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db

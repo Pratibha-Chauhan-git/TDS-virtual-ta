@@ -1,0 +1,27 @@
+# FastAPI backend
+fastapi
+uvicorn
+# For data models and type checking
+pydantic
+# Semantic Search (FAISS + Sentence Transformers)
+faiss-cpu
+sentence-transformers
+# XML parsing and markdown reading
+lxml
+markdown
+# Image handling (base64 decoding, image processing)
+Pillow
+python-multipart
+# Utility (optional, but recommended)
+python-dotenv
+
+promptfoo
+aiohttp
+numpy
+beautifulsoup4
+html2text
+tqdm
+markdown
+httpx
+pytesseract
+numpy
