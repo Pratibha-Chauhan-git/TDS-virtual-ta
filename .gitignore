@@ -4,7 +4,8 @@ tools-in-data-science-public/
 # Ignore Python cache and virtual environment
 __pycache__/
 venv/
-
+downloaded_threads/
+markdown_files/
 # Ignore sensitive files
 auth.json
 embedding_data.json

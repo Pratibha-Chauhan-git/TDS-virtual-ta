@@ -110,7 +110,8 @@ def scrape_posts(playwright):
                     "content": BeautifulSoup(post["cooked"], "html.parser").get_text()
                 })
 
-    with open("discourse_posts.json", "w") as f:
+    os.makedirs("downloaded_threads", exist_ok=True)
+    with open("downloaded_threads/discourse_posts.json", "w") as f:
         json.dump(filtered_posts, f, indent=2)
 
     print(f"✅ Scraped {len(filtered_posts)} posts between {DATE_FROM.date()} and {DATE_TO.date()}")
