@@ -21,7 +21,7 @@ if not AIPROXY_TOKEN:
     raise ValueError("Missing OPENAI_API_KEY in .env file")
 
 # Load sentence transformer and FAISS index
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
 index = faiss.read_index("vector.index")
 with open("embedding_data.json", "r", encoding="utf-8") as f:
     embedding_data = json.load(f)
