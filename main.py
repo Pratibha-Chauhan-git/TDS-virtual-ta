@@ -3,13 +3,11 @@ import json
 import base64
 import io
 import numpy as np
-import faiss
 from PIL import Image
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
-from sentence_transformers import SentenceTransformer
 import pytesseract
 import httpx
 from dotenv import load_dotenv
@@ -21,10 +19,17 @@ if not AIPROXY_TOKEN:
     raise ValueError("Missing OPENAI_API_KEY in .env file")
 
 # Load sentence transformer and FAISS index
-model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
-index = faiss.read_index("vector.index")
-with open("embedding_data.json", "r", encoding="utf-8") as f:
-    embedding_data = json.load(f)
+@app.post("/api/")
+async def answer_question(query: Query):
+    from sentence_transformers import SentenceTransformer
+    import faiss
+
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    index = faiss.read_index("vector.index")
+
+    with open("embedding_data.json", "r", encoding="utf-8") as f:
+        embedding_data = json.load(f)
+
 
 # Final system instructions
 SYSTEM_INSTRUCTIONS = """
