@@ -33,6 +33,11 @@ class Query(BaseModel):
     question: str
     image: Optional[str] = None
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the TDS Virtual TA API"}
+
+
 @app.post("/api/")
 async def answer_question(query: Query):
     from sentence_transformers import SentenceTransformer
