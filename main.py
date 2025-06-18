@@ -20,6 +20,19 @@ if not AIPROXY_TOKEN:
 
 # Load sentence transformer and FAISS index
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class Query(BaseModel):
+    question: str
+    image: Optional[str] = None
+
 @app.post("/api/")
 async def answer_question(query: Query):
     from sentence_transformers import SentenceTransformer
@@ -43,18 +56,6 @@ You are a Teaching Assistant (TA) for the Tools in Data Science course at IIT Ma
 5. Follow-up: Ask thoughtful questions to help students explore and learn.
 """
 
-# FastAPI setup
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-class Query(BaseModel):
-    question: str
-    image: Optional[str] = None
 
 # Utility functions
 def normalize(v):
