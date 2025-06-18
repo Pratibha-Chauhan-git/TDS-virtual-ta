@@ -19,6 +19,7 @@ if not AIPROXY_TOKEN:
     raise ValueError("Missing OPENAI_API_KEY in .env file")
 
 # Load sentence transformer and FAISS index
+app = FastAPI()
 @app.post("/api/")
 async def answer_question(query: Query):
     from sentence_transformers import SentenceTransformer
@@ -43,7 +44,6 @@ You are a Teaching Assistant (TA) for the Tools in Data Science course at IIT Ma
 """
 
 # FastAPI setup
-app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
