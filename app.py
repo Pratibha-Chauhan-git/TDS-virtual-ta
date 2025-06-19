@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 # Constants
 DB_PATH = "knowledge_base.db"
-SIMILARITY_THRESHOLD = 0.68  # Lowered threshold for better recall
+SIMILARITY_THRESHOLD = 0.50  # Lowered threshold for better recall
 MAX_RESULTS = 10  # Increased to get more context
 load_dotenv()
 MAX_CONTEXT_CHUNKS = 4  # Increased number of chunks per source
@@ -44,9 +44,6 @@ class QueryResponse(BaseModel):
 
 # Initialize FastAPI app
 app = FastAPI(title="RAG Query API", description="API for querying the RAG knowledge base")
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the RAG Query API. Visit /docs for API documentation."}
 
 # Add CORS middleware
 app.add_middleware(
